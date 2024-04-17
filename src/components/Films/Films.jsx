@@ -1,4 +1,4 @@
-import "./Films.module.scss"
+import classes from "./Films.module.scss"
 
 const Films = () => {
   return (  

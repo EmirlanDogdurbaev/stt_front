@@ -5,18 +5,20 @@ import AudioCard from "./components/AudioCard/AudioCard.jsx";
 import Register from "./components/Auth/Register/Register.jsx";
 import Login from "./components/Auth/Login/Login.jsx";
 import Books from "./components/Books/Books.jsx";
+import Courses from "./components/Courses/Courses.jsx";
 
 
 function App() {
     return (
         <>
             <Layout>
-                {localStorage.getItem("token")  ? (
+                {!localStorage.getItem("token")  ? (
                     <Routes>
                         <Route path="/" index element={<AudioCard/>}/>
                         <Route path="/test" element={<AudioCard/>}/>
                         <Route path="/films" element={<Films/>}/>
                         <Route path="/books" element={<Books/>}/>
+                        <Route path="/courses" element={<Courses/>}/>
 
                     </Routes>
                 ) : (

@@ -1,8 +1,8 @@
-import "./Books.module.scss"
+import classes from "./Books.module.scss"
 
 const Books = () => {
     return (  
-        <div className="Books">
+        <div className={classes.Books}>
             <div className="Books__download">
                 <button className="Books__download-btn">Загрузить видео</button>
                 <p className="Books__download-text">Загрузите своё видео, и получите текст</p>
