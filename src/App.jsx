@@ -7,6 +7,7 @@ import Books from "./components/Books/Books.jsx";
 import FlexCard from "./components/FlexCard/FlexCard.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import Courses from "./components/Courses/Courses.jsx";
+import Bookpage from "./pages/Bookpage/Bookpage.jsx";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         {localStorage.getItem("token") ? (
           <Routes>
             <Route path="/" index element={<Homepage />} />
-            <Route path="/test" element={<FlexCard />} />
+            <Route path="/test" element={<Bookpage />} />
             <Route path="/films" element={<Films />} />
             <Route path="/books" element={<Books />} />
             <Route path="/courses" element={<Courses />} />
