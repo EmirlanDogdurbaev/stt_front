@@ -20,8 +20,8 @@ function App() {
           <Routes>
             <Route path="/" index element={<Homepage />} />
             <Route path="/test" element={<FlexCard />} />
-            <Route path="/films" element={<Filmpage />} />
-            <Route path="/films" element={<Bookpage/>} />
+            <Route path="/videopage" element={<Filmpage />} />
+            <Route path="/bookpage" element={<Bookpage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Navigate to="/" />} />
