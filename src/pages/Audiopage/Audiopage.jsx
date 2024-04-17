@@ -1,7 +1,7 @@
 import React from "react";
-import cl from "./Audiopage.module.scss";
+import classes from "./Audiopage.module.scss";
 import AudioCard from "../../components/AudioCard/AudioCard";
-import FlexCard from "../../components/FlexCard/FlexCard";
+import { Link } from "react-router-dom";
 
 function Audiopage() {
   const songsData = [
@@ -57,19 +57,27 @@ function Audiopage() {
     // Добавьте остальные данные о песнях по аналогии
   ];
   return (
-    <>
-      <FlexCard />
-      <div className={cl.wrap}>
-        {songsData.map((song, index) => (
-          <AudioCard
-            key={index}
-            songName={song.songName}
-            authorName={song.authorName}
-            imageUrl={song.imageUrl}
-          />
-        ))}
-      </div>
-    </>
+    <div className={classes.Audiopage}>
+      <aside className={classes.Audiopage__navigation}>
+        <ul className={classes.Audiopage__links}>
+          <li className={classes.Audiopage__link}>Каталог аудиозаписей</li>
+          <li className={classes.Audiopage__link}>Свои аудиозаписи</li>
+        </ul>
+      </aside>
+      <section className="Audiopage__content">
+        <h3 className={classes.Audiopage__title}>Аудиозаписи</h3>
+        <ul className={classes.Audiopage__audios}>
+          <li className={classes.Audiopage__audio}>
+            <Link to="#">
+              <audio >
+                <source src="https://soundcloud.com/21savage/21-savage-travis-scott-metro?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3"/>
+              </audio>
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+    </div>
   );
 }
 

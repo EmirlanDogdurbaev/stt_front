@@ -2,7 +2,6 @@ import Layout from "./components/Layout/Layout.jsx";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Register from "./components/Auth/Register/Register.jsx";
 import Login from "./components/Auth/Login/Login.jsx";
-import FlexCard from "./components/FlexCard/FlexCard.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import Bookpage from "./pages/Bookpage/Bookpage.jsx";
 import Filmpage from "./pages/Filmpage/Filmpage.jsx";
