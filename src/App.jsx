@@ -28,7 +28,7 @@ function App() {
             <Route path="/bookdetail" element={<BookDetail />} />
             <Route path="/audiodetail" element={<AudioDetail />} />
             <Route path="/filmdetail" element={<FilmDetail />} />
-            <Route path="/films" element={<Films />} />
+            <Route path="/films" element={<Filmpage />} />
             <Route path="/books" element={<Books />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="*" element={<Navigate to="/" />} />
