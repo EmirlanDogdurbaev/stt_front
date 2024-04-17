@@ -32,21 +32,21 @@ const FilmDetail = () => {
         </video>
         <Link to="#">
           <div className={classes.btn}>
-            <p className={classes.btnText}>Загрузить видео</p>
+            <p className={classes.btnText}>Включить субтитры</p>
           </div>
         </Link>
       </div>
       <div className={classes.right}>
         <p className={classes.rText}>{dynamic_text}</p>
         <div className={classes.rbtns}>
-          <div className={classes.rsmall}>
-            <p>Скачать .txt</p>
+          <div className={cl.rsmall}>
+            <p>Кыргызский</p>
           </div>
-          <div className={classes.rsmall}>
-            <p>Скачать .pdf</p>
+          <div className={cl.rsmall}>
+            <p>Русский</p>
           </div>
-          <div className={classes.rsmall}>
-            <p>Копировать</p>
+          <div className={cl.rsmall}>
+            <p>Английский</p>
           </div>
         </div>
       </div>

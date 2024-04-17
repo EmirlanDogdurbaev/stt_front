@@ -31,7 +31,7 @@ function AudioDetail() {
         ></audio>
         <Link to="#">
           <div className={cl.btn}>
-            <p className={cl.btnText}>Загрузить книгу</p>
+            <p className={cl.btnText}>Включить субтитры</p>
           </div>
         </Link>
       </div>
@@ -39,13 +39,13 @@ function AudioDetail() {
         <p className={cl.rText}>{dynamic_text}</p>
         <div className={cl.rbtns}>
           <div className={cl.rsmall}>
-            <p>Скачать .txt</p>
+            <p>Кыргызский</p>
           </div>
           <div className={cl.rsmall}>
-            <p>Скачать .pdf</p>
+            <p>Русский</p>
           </div>
           <div className={cl.rsmall}>
-            <p>Копировать</p>
+            <p>Английский</p>
           </div>
         </div>
       </div>

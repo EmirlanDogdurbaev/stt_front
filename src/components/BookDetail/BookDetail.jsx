@@ -1,6 +1,6 @@
 import React from "react";
 import cl from "./BookDetail.module.scss";
-import { Link } from "react-router-dom";
+import trans from "../../assets/transfer.png";
 
 function BookDetail() {
   const dynamic_text = `Я был правозащитником, а бывших правозащитников не бывает» — на
@@ -23,23 +23,20 @@ function BookDetail() {
 
   return (
     <div className={cl.wrap}>
-      <div className={cl.left}>
-        <textarea
-          placeholder="Введите текст"
-          className={cl.leftArea}
-        ></textarea>
-        <Link to="#">
-          <div className={cl.btn}>
-            <p className={cl.btnText}>Загрузить книгу</p>
-          </div>
-        </Link>
-      </div>
       <div className={cl.right}>
         <p className={cl.rText}>{dynamic_text}</p>
         <div className={cl.rbtns}>
           <div className={cl.rsmall}>
             <p>Кыргызский</p>
           </div>
+        </div>
+      </div>
+
+      <img src={trans} alt="photo" className={cl.trans}  />
+
+      <div className={cl.right}>
+        <p className={cl.rText}>{dynamic_text}</p>
+        <div className={cl.rbtns}>
           <div className={cl.rsmall}>
             <p>Русский</p>
           </div>
