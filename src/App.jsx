@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" index element={<AudioCard />} />
           <Route path="/test" element={<AudioCard />} />
+          <Route path="/films" element={<Films/>}/>
         </Routes>
       </Layout>
     </>
