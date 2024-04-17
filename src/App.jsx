@@ -10,6 +10,7 @@ import Audiopage from "./pages/Audiopage/Audiopage.jsx";
 import BookDetail from "./components/BookDetail/BookDetail.jsx";
 import FilmDetail from "./components/FilmDetail/FilmDetail.jsx";
 import AudioDetail from "./components/AudioDetail/AudioDetail.jsx";
+import Courses from "./components/Courses/Courses.jsx";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/videopage" element={<Filmpage />} />
             <Route path="/bookpage" element={<Bookpage />} />
             <Route path="/audiopage" element={<Audiopage />} />
+            <Route path="/coursepage" element={<Courses />} />
             <Route path="/videodetail" element={<FilmDetail />} />
             <Route path="/bookdetail" element={<BookDetail />} />
             <Route path="/audiodetail" element={<AudioDetail />} />
