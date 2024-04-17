@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import cl from "./AudioCard.module.scss";
+import cl from "./FlexCard.module.scss";
 import { Link } from "react-router-dom";
 
-const AudioCard = (props) => {
+const FlexCard = (props) => {
   const [state, setState] = useState(1);
 
   if (props.status === 1) {
@@ -19,7 +19,7 @@ const AudioCard = (props) => {
     let newRandomState;
     do {
       newRandomState = Math.floor(Math.random() * 3) + 1;
-    } while (newRandomState === state); // Проверяем, что новое число отличается от предыдущего состояния
+    } while (newRandomState === state);
     setState(newRandomState);
   };
 
@@ -60,4 +60,4 @@ const AudioCard = (props) => {
     </>
   );
 };
-export default AudioCard;
+export default FlexCard;
