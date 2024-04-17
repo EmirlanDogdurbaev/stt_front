@@ -6,6 +6,7 @@ import Login from "./components/Auth/Login/Login.jsx";
 import Books from "./components/Books/Books.jsx";
 import FlexCard from "./components/FlexCard/FlexCard.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
+import Courses from "./components/Courses/Courses.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/test" element={<FlexCard />} />
             <Route path="/films" element={<Films />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/courses" element={<Courses />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (
