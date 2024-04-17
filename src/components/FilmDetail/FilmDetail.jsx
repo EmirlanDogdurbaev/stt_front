@@ -1,51 +1,84 @@
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import classes from "./FilmDetail.module.scss";
-import { Link } from "react-router-dom";
 
 const FilmDetail = () => {
-  const dynamic_text = `Я был правозащитником, а бывших правозащитников не бывает» — на
-    вопросы RFI ответил заместитель председателя кабинета министров
-    Кыргызстана Эдиль Байсалов «Перелом в сознании произошел», — завил
-    в интервью RFI  по поводу прав женщин заместитель председателя
-    кабинета министров Кыргызстана Эдиль Байсалов, который прибыл в Париж
-    в связи с празднованиями в честь 75-летия принятия Всеобщей декларации
-    прав человека. Он также ответил на вопросы об экологических правах,
-    борьбе с коррупцией и об ограничивающих свободу гражданского общества
-    законопроектах. Я был правозащитником, а бывших правозащитников
-    не бывает» — на вопросы RFI ответил заместитель председателя кабинета
-    министров Кыргызстана Эдиль Байсалов «Перелом в сознании
-    произошел», — завил в интервью RFI  по поводу прав женщин заместитель
-    председателя кабинета министров Кыргызстана Эдиль Байсалов, который
-    прибыл в Париж в связи с празднованиями в честь 75-летия принятия
-    Всеобщей декларации прав человека. Он также ответил на вопросы об
-    экологических правах, борьбе с коррупцией и об ограничивающих свободу
-    гражданского общества законопроектах.`;
+  const [filmData, setFilmData] = useState(null);
+  const { id } = useParams(); // Получение id фильма из URL
+
+  useEffect(() => {
+    const fetchFilmData = async () => {
+      try {
+        const response = await axios.get(
+          `http://192.168.54.19:8000/movies/${id}`
+        );
+        setFilmData(response.data); // Сохранение полученных данных о фильме
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching film data:", error);
+      }
+    };
+
+    fetchFilmData();
+
+    return () => {
+      setFilmData(null);
+    };
+  }, [id]);
+
+  if (!filmData) {
+    return <div>Loading...</div>;
+  }
+
+  const { file, subtitles } = filmData;
+
+  const handleSubtitlesRequest = async (language) => {
+    try {
+      const response = await axios.get(
+        `http://192.168.54.19:8000/movies/${id}/subtitles?language=${language}`
+      );
+      setFilmData(response.data); // Сохранение полученных субтитров
+    } catch (error) {
+      console.error("Error fetching subtitles:", error);
+    }
+  };
 
   return (
     <div className={classes.wrap}>
       <div className={classes.left}>
-        <video className={classes.leftArea} autoPlay controls>
-          <source
-            src="https://cdn.pixabay.com/video/2023/12/10/192687-893427276_large.mp4"
-            allowfullscreen
-            type="video/mp4"
-          />
+        <video className={classes.leftArea} controls>
+          <source src={file} allowFullScreen type="video/mp4" />
         </video>
-        <Link to="#">
+        {/* <Link to="#">
           <div className={classes.btn}>
             <p className={classes.btnText}>Включить субтитры</p>
           </div>
-        </Link>
+        </Link> */}
       </div>
       <div className={classes.right}>
-        <p className={classes.rText}>{dynamic_text}</p>
+        <p className={classes.rText}>
+          {subtitles
+            ? subtitles
+            : "Включите субтитры, чтобы получить текст с видео"}
+        </p>
         <div className={classes.rbtns}>
-          <div className={cl.rsmall}>
+          <div
+            className={classes.rsmall}
+            onClick={() => handleSubtitlesRequest("kg")}
+          >
             <p>Кыргызский</p>
           </div>
-          <div className={cl.rsmall}>
+          <div
+            className={classes.rsmall}
+            onClick={() => handleSubtitlesRequest("ru")}
+          >
             <p>Русский</p>
           </div>
-          <div className={cl.rsmall}>
+          <div
+            className={classes.rsmall}
+            onClick={() => handleSubtitlesRequest("en")}
+          >
             <p>Английский</p>
           </div>
         </div>

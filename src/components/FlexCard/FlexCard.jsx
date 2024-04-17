@@ -19,11 +19,7 @@ const FlexCard = (props) => {
   }, []);
 
   const handleClick = () => {
-    let newRandomState;
-    do {
-      newRandomState = Math.floor(Math.random() * 3) + 1;
-    } while (newRandomState === state);
-    setState(newRandomState);
+    props.setIsModalActive(!props.isModalActive);
   };
 
   return (
@@ -36,6 +32,7 @@ const FlexCard = (props) => {
       >
         <Link to="#">
           <div
+            className={cl.btnModal}
             style={{
               boxShadow:
                 state === 1
