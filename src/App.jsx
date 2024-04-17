@@ -26,7 +26,7 @@ function App() {
             <Route path="/" index element={<Homepage />} />
             <Route path="/videopage" element={<Filmpage />} />
             <Route path="/bookpage" element={<Bookpage />} />
-            <Route path="/audiopage" element={<Audiopage />} />
+            <Route path="/audiopage/:id" element={<Audiopage />} />
             <Route path="/coursepage" element={<Courses />} />
             <Route path="/videodetail" element={<FilmDetail />} />
             <Route path="/bookdetail" element={<BookDetail />} />
