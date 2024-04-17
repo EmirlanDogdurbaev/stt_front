@@ -5,6 +5,9 @@ import Register from "./components/Auth/Register/Register.jsx";
 import Login from "./components/Auth/Login/Login.jsx";
 import Books from "./components/Books/Books.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
+import Bookpage from "./pages/Bookpage/Bookpage.jsx";
+import Courses from "./components/Courses/Courses.jsx";
+import BookDetail from "./components/BookDetail/BookDetail.jsx";
 
 function App() {
   return (
@@ -19,7 +22,8 @@ function App() {
         ) : (
           <Routes>
             <Route path="/" index element={<Homepage />} />
-            <Route path="/test" element={<Bookpage />} />
+            <Route path="/bookpage" element={<Bookpage />} />
+            <Route path="/bookdetail" element={<BookDetail />} />
             <Route path="/films" element={<Films />} />
             <Route path="/books" element={<Books />} />
             <Route path="/courses" element={<Courses />} />
