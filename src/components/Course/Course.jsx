@@ -1,15 +1,28 @@
 import classes from "./Course.module.scss"
+import { Link } from "react-router-dom";
 
 const Course = () => {
     return ( 
         <div className={classes.Course}>
-            <h2 className="Course__title">А1 Начинающий уровень</h2>
-            <ul className="Course__lessons">
-                <li className="Course_lesson lesson">
-                    <h3 className="lesson__title"></h3>
-                    {/* <Link className="lesson__link" to={`/lesson:${props.id}`}>
+            <h2 className={classes.Course__title}>А1 Начинающий уровень</h2>
+            <ul className={classes.Course__lessons}>
+                <li className={classes.lesson}>
+                    <h3 className={classes.lesson__title}>Алфавит</h3>
+                    <Link className={classes.lesson__link} to="#">
                         Изучить
-                    </Link> */}
+                    </Link>
+                </li>
+                <li className={classes.lesson}>
+                    <h3 className={classes.lesson__title}>Алфавит</h3>
+                    <Link className={classes.lesson__link} to="#">
+                        Изучить
+                    </Link>
+                </li>
+                <li className={classes.lesson}>
+                    <h3 className={classes.lesson__title}>Алфавит</h3>
+                    <Link className={classes.lesson__link} to="#">
+                        Изучить
+                    </Link>
                 </li>
             </ul>
         </div>
