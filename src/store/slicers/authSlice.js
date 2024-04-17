@@ -5,7 +5,7 @@ import { api } from '../requests/api';
 export const login = createAsyncThunk('auth/login', async ({ password, email }) => {
     // eslint-disable-next-line no-useless-catch
     try {
-        const response = await axios.post(`${api}/auth/login`, { password, email });
+        const response = await axios.post(`${api}/login`, { password, email });
         const token = response.data.access_token;
         console.log(token)
         localStorage.setItem('access_token', token);
@@ -17,9 +17,9 @@ export const login = createAsyncThunk('auth/login', async ({ password, email }) 
 });
 
 
-export const signup = createAsyncThunk('auth/signup', async ({ username, password, email }) => {
-    const response = await axios.post( `${api}/auth/register`, { username, password, email });
-    const token = response.data.token;
+export const signup = createAsyncThunk('/signup', async ({ username, password, email }) => {
+    const response = await axios.post( `${api}/register`, { username, password, email });
+    const token = response.data.access_token;
     localStorage.setItem('access_token', token);
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
