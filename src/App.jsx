@@ -7,8 +7,8 @@ function App() {
     <>
       <Layout>
         <Routes>
-          <Route path="/" exact element={<AudioCard />}/>
-            <Route path="/test" exact element={<AudioCard/>} />
+          <Route path="/" index element={<AudioCard />} />
+          <Route path="/test" element={<AudioCard />} />
         </Routes>
       </Layout>
     </>
