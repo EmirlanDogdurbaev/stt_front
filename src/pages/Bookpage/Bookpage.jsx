@@ -1,6 +1,7 @@
 import React from "react";
 import cl from "./Bookpage.module.scss";
 import Book from "../../components/Book/Book";
+import FlexCard from "../../components/FlexCard/FlexCard";
 
 function Bookpage() {
   const books = [
@@ -30,16 +31,19 @@ function Bookpage() {
     },
   ];
   return (
-    <div className={cl.wrap}>
-      {books.map((book, index) => (
-        <Book
-          key={index}
-          imageUrl={book.imageUrl}
-          author={book.author}
-          name={book.name}
-        />
-      ))}
-    </div>
+    <>
+      <FlexCard />
+      <div className={cl.wrap}>
+        {books.map((book, index) => (
+          <Book
+            key={index}
+            imageUrl={book.imageUrl}
+            author={book.author}
+            name={book.name}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 

@@ -6,6 +6,7 @@ import FlexCard from "./components/FlexCard/FlexCard.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import Bookpage from "./pages/Bookpage/Bookpage.jsx";
 import Filmpage from "./pages/Filmpage/Filmpage.jsx";
+import Audiopage from "./pages/Audiopage/Audiopage.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/test" element={<FlexCard />} />
             <Route path="/videopage" element={<Filmpage />} />
             <Route path="/bookpage" element={<Bookpage />} />
+            <Route path="/audiopage" element={<Audiopage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Navigate to="/" />} />

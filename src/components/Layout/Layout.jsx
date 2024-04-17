@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <main>
       <Navbar />
-      <FlexCard />
+      {/* <FlexCard /> */}
       <section>{children}</section>
     </main>
   );

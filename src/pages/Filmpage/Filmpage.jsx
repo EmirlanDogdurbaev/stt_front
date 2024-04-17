@@ -34,6 +34,7 @@ const Filmpage = () => {
   ];
   return (
     <>
+      <FlexCard />
       <div className={classes.Filmpage}>
         {films.map((film, index) => (
           <Film

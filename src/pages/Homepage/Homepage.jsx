@@ -37,7 +37,7 @@ function Homepage() {
             <p>Загрузите своё видео и сгенерируйте свои субтитры</p>
           </div>
         </Link>{" "}
-        <Link to={"/home"}>
+        <Link to={"/audiopage"}>
           <div>
             <h3>
               Учить <br /> кыргызский по песням
