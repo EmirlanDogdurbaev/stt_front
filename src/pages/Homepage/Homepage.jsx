@@ -1,56 +1,81 @@
 import cl from "./Homepage.module.scss";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import icon1 from "../../assets/flex.svg"
+import icon2 from "../../assets/Vector.svg"
+import icon3 from "../../assets/flex3.svg"
+import icon4 from "../../assets/flex4.svg"
+import icon5 from "../../assets/flex2.svg"
+
 
 function Homepage() {
-  return (
-    <div className={cl.Home}>
-      <div>
-        <Link to={"/test"}>
-          <div>
-            <h3>
-              Уроки <br />
-              кыргызского языка
-            </h3>
-          </div>
-          <div>
-            <p>Аудирование, чтение и граматика. Теория и практика</p>
-          </div>
-        </Link>
-        <Link to={"/bookpage"}>
-          <div>
-            <h3>
-              Учить <br /> кыргызский по книгам
-            </h3>
-          </div>
-          <div>
-            <p>Читайте кыргызские книги с переводом и озвучкой</p>
-          </div>
-        </Link>{" "}
-        <Link to={"/videopage"}>
-          <div>
-            <h3>
-              Учить <br /> кыргызский по фильмам
-            </h3>
-          </div>
-          <div>
-            <p>Смотри фильмы с субтитрами, переводом и озвечкой</p>
-            <p>Загрузите своё видео и сгенерируйте свои субтитры</p>
-          </div>
-        </Link>{" "}
-        <Link to={"/audiopage"}>
-          <div>
-            <h3>
-              Учить <br /> кыргызский по песням
-            </h3>
-          </div>
-          <div>
-            <p>Слушайте песни с субтитрами, переводом и озвечкой</p>
-            <p>Загрузите своё аудио и сгенерируйте свои субтитры</p>
-          </div>
-        </Link>
-      </div>
-    </div>
-  );
+    return (
+        <section className={cl.HomePage}>
+            <div className={cl.cont}>
+                <section className={cl.left}>
+                    <img src="" alt=""/>
+                    <aside>
+                        <Link to={"/"}>
+                            <img src={icon5} alt="" width={64} height={64}/>
+                            <h4>Уроки кыргызского языка</h4>
+                            <div>
+                                <p>
+                                    Аудирование, чтение и граматика. <br/>
+                                    Теория и практика
+                                </p>
+                                <img src={icon2} alt=""/>
+                            </div>
+                        </Link>
+                    </aside>
+                </section>
+
+                <section className={cl.right}>
+                    <div>
+                        <img src={icon1} alt=""/>
+                        <article>
+                            <aside>
+                                <h3>Учить кыргызский по <br/> аудио</h3>
+                                <p>Читайте кыргызские книги с переводом и озвучкой</p>
+                            </aside>
+                            <Link to={"/"}>
+                                <img src={icon2} alt=""/>
+                            </Link>
+                        </article>
+
+                    </div>
+
+                    <div>
+                        <img src={icon3} alt=""/>
+
+                        <article>
+                            <aside>
+                                <h3>Учить кыргызский по фильмам</h3>
+                                <p>Загрузите своё видео и сгенерируйте свои субтитры</p>
+                            </aside>
+                            <Link to={"/"}>
+                                <img src={icon2} alt=""/>
+                            </Link>
+                        </article>
+
+                    </div>
+
+                    <div>
+                        <img src={icon4} alt=""/>
+                        <article>
+                            <aside>
+                                <h3>Учить кыргызский по книгам</h3>
+                                <p>Слушайте песни с субтитрами, переводом и озвучкой</p>
+                            </aside>
+                            <Link to={"/"}>
+                                <img src={icon2} alt=""/>
+                            </Link>
+                        </article>
+
+                    </div>
+
+                </section>
+            </div>
+        </section>
+    )
 }
 
 export default Homepage;
