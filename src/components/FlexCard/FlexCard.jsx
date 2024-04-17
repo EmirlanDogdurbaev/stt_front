@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cl from "./FlexCard.module.scss";
 import { Link } from "react-router-dom";
 
 const FlexCard = (props) => {
-  const [state, setState] = useState(1);
+  const [state, setState] = useState(0);
 
-  if (props.status === 1) {
-    setState(1);
-  }
-  if (props.status === 2) {
-    setState(2);
-  }
-  if (props.status === 3) {
-    setState(3);
-  }
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === "/bookpage") {
+      setState(3);
+    } else if (path === "/audiopage") {
+      setState(2);
+    } else if (path === "/videopage") {
+      setState(1);
+    } else {
+      setState(0);
+    }
+  }, []);
 
   const handleClick = () => {
     let newRandomState;
@@ -25,7 +28,12 @@ const FlexCard = (props) => {
 
   return (
     <>
-      <div className={cl.wrap}>
+      <div
+        className={cl.wrap}
+        style={{
+          display: state !== 0 ? "flex" : "none", // Изменено условие для отображения компонента
+        }}
+      >
         <Link to="#">
           <div
             style={{
