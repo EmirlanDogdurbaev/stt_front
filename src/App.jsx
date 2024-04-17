@@ -8,6 +8,7 @@ import Bookpage from "./pages/Bookpage/Bookpage.jsx";
 import Filmpage from "./pages/Filmpage/Filmpage.jsx";
 import Courses from "./components/Courses/Courses.jsx";
 import BookDetail from "./components/BookDetail/BookDetail.jsx";
+import AudioDetail from "./components/AudioDetail/AudioDetail.jsx";
 import FilmDetail from "./components/FilmDetail/FilmDetail.jsx";
 
 function App() {
@@ -25,8 +26,9 @@ function App() {
             <Route path="/" index element={<Homepage />} />
             <Route path="/bookpage" element={<Bookpage />} />
             <Route path="/bookdetail" element={<BookDetail />} />
+            <Route path="/audiodetail" element={<AudioDetail />} />
             <Route path="/filmdetail" element={<FilmDetail />} />
-            <Route path="/films" element={<Filmpage />} />
+            <Route path="/films" element={<Films />} />
             <Route path="/books" element={<Books />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="*" element={<Navigate to="/" />} />
