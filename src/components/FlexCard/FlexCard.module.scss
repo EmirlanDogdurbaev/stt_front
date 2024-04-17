@@ -1,0 +1,25 @@
+.wrap{
+    width: 100%;
+    padding: 30px 10% ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    >a{
+        >div{
+            background-color: white;  
+            padding: 30px 50px;
+            border-radius: 20px;  
+            box-shadow: 0px 0px 20px 2px #21FF87;
+            .btnText{
+                font-size: 28px;
+                font-weight: 700;
+            }
+        }
+    }
+    .rightText{
+        font-size: 28px;
+        font-weight: 700;
+        width: 450px;
+        text-align: right;
+    }
+}
