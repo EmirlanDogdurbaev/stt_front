@@ -1,7 +1,15 @@
+import Layout from "./components/Layout/Layout.jsx";
+import {Route, Routes} from "react-router-dom";
+
 function App() {
     return (
         <>
-            <h2>hello</h2>
+          <Layout>
+
+              <Routes>
+                  <Route path="/" exact component={App} />
+              </Routes>
+          </Layout>
         </>
     )
 }
