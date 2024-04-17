@@ -8,6 +8,7 @@ import FlexCard from "./components/FlexCard/FlexCard.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
 import Courses from "./components/Courses/Courses.jsx";
 import Bookpage from "./pages/Bookpage/Bookpage.jsx";
+import Filmpage from "./pages/Filmpage/Filmpage.jsx";
 
 function App() {
   return (
@@ -15,18 +16,18 @@ function App() {
       <Layout>
         {localStorage.getItem("token") ? (
           <Routes>
-            <Route path="/" index element={<Homepage />} />
-            <Route path="/test" element={<Bookpage />} />
-            <Route path="/films" element={<Films />} />
-            <Route path="/books" element={<Books />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        ) : (
-          <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/signup" index element={<Register />} />
             <Route path="/login" element={<Login />} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="/" index element={<Homepage />} />
+            <Route path="/test" element={<Bookpage />} />
+            <Route path="/films" element={<Filmpage />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         )}
       </Layout>
