@@ -24,7 +24,11 @@ function AudioDetail() {
   return (
     <div className={cl.wrap}>
       <div className={cl.left}>
-        <audio controls src="/media/cc0-audio/t-rex-roar.mp3"></audio>
+        <audio
+          controls
+          className={cl.audio}
+          src="/media/cc0-audio/t-rex-roar.mp3"
+        ></audio>
         <Link to="#">
           <div className={cl.btn}>
             <p className={cl.btnText}>Загрузить книгу</p>
