@@ -33,7 +33,7 @@ function BookDetail() {
 
   const handleCopyText = () => {
     clipboard(dynamic_text);
-    alert("Текст скопирован в буфер обмена");
+    alert("Текст скопирован в буфер обмена ");
   };
 
   return (
