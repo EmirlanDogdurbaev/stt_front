@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Layout>
-        {!localStorage.getItem("token") ? (
+        {localStorage.getItem("token") ? (
           <Routes>
             <Route path="/" index element={<Homepage />} />
             <Route path="/test" element={<FlexCard />} />
