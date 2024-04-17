@@ -27,13 +27,8 @@ function App() {
             <Route path="/bookpage" element={<Bookpage />} />
             <Route path="/bookdetail" element={<BookDetail />} />
             <Route path="/audiodetail" element={<AudioDetail />} />
-<<<<<<< HEAD
             <Route path="/filmdetail" element={<FilmDetail />} />
             <Route path="/films" element={<Filmpage />} />
-=======
-            <Route path="/films" element={<Films />} />
->>>>>>> a6ec5b5 (upgrade audio details)
-            <Route path="/books" element={<Books />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
