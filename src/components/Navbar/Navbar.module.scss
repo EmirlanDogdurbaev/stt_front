@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     > .nav_logo {
       > li {
         a {
@@ -27,8 +28,9 @@
   .nav {
     display: flex;
     gap: 30px;
-    >li{
-      a{
+
+    > li {
+      a {
         color: white;
       }
     }
