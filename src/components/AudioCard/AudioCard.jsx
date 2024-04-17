@@ -16,8 +16,11 @@ const AudioCard = (props) => {
   }
 
   const handleClick = () => {
-    const randomState = Math.floor(Math.random() * 3) + 1;
-    setState(randomState);
+    let newRandomState;
+    do {
+      newRandomState = Math.floor(Math.random() * 3) + 1;
+    } while (newRandomState === state); // Проверяем, что новое число отличается от предыдущего состояния
+    setState(newRandomState);
   };
 
   return (
