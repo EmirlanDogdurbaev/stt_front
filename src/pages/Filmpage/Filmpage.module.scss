@@ -49,6 +49,10 @@
       display: flex;
       flex-direction: column;
       overflow: scroll;
+      scrollbar-width: none;
+        /* Убираем индикаторы скролла в Firefox */
+        -ms-overflow-style: none;
+      
 
       .film {
         position: relative;
