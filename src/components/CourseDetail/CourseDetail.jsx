@@ -1,6 +1,46 @@
+import { useEffect, useState } from "react";
 import classes from "./CourseDetail.module.scss";
 
 function CourseDetail() {
+    const [questions, setQuestions] = useState([]);
+    useEffect(() => {
+        async function fetchQuestions(){
+            try {
+                const response  = await axios.get("http://192.168.54.19:8000/lesson/reading/`${id}`");
+                setQuestions(response.data);
+            } catch (error) {
+                console.error("Error fetching questions: ", error);
+            }
+        }  
+
+        fetchQuestions();  
+    }, []);
+
+    const [questionData, setQuestionData] = useState({
+        text: "",
+        answer: null,
+    });
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("asdasd")
+        try {
+            const formData = new FormData();
+            formData.append("title", questionData.text);
+            formData.append("image", questionData.answer);
+
+            const response = await axios.post(
+                "http://192.168.54.19:8000/reading/``${id}`/test",
+                formData
+            );
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error sending answer:", error);
+        }
+    };
+
+
     return (
         <div className={classes.CourseDetail}>
             <div className={classes.CourseDetail__wallpaper}>
