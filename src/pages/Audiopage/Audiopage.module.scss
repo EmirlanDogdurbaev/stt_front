@@ -1,8 +1,27 @@
-.wrap{
-    width: 100%;
-    padding: 50px 10%;
+.Audiopage{
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column;
+    padding: 0 70px;
+    section>*{
+        margin: 50px 0;
+    }
+    .btn{
+        background-color: #fff;
+        padding: 20px 40px;
+        font-size: 48px;
+        border-radius: 30px;
+        border: none;
+        box-shadow: 0 0 10px 5px #ff6b6b;
+        margin: 20p 40px;
+        cursor: pointer;
+    }
+    .Audiopage__audios{
+        display: flex;
+        flex-wrap: wrap;
+        >div{
+            margin: 10px;
+        }
+    }
+
+    
 }
