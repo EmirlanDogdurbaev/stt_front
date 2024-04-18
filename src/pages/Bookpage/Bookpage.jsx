@@ -108,11 +108,17 @@ const Bookpage = () => {
                 type="text"
                 name="title"
                 placeholder="Title of book"
+                style={{
+                  width: "60%",
+                }}
                 value={bookData.title}
                 onChange={handleChange}
               />
               <input
                 type="text"
+                style={{
+                  width: "60%",
+                }}
                 name="author"
                 placeholder="Author"
                 value={bookData.author}
@@ -120,6 +126,10 @@ const Bookpage = () => {
               />
               <textarea
                 name="content"
+                style={{
+                  width: "60%",
+                  height: "200px",
+                }}
                 placeholder="Content"
                 value={bookData.content}
                 onChange={handleChange}
