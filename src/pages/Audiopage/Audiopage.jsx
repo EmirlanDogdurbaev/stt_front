@@ -69,14 +69,16 @@ function Audiopage() {
         <ul className={classes.Audiopage__audios}>
           <li className={classes.Audiopage__audio}>
             <Link to="#">
-              <audio >
-                <source src="https://soundcloud.com/21savage/21-savage-travis-scott-metro?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3"/>
+              <audio>
+                <source
+                  src="https://soundcloud.com/21savage/21-savage-travis-scott-metro?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+                  type="audio/mp3"
+                />
               </audio>
             </Link>
           </li>
         </ul>
       </section>
-
     </div>
   );
 }
