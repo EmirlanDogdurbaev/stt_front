@@ -31,6 +31,7 @@ function FilmModal(props) {
         formData
       );
       console.log("Film added successfully:", response.data);
+      props.setIsModalActive(false);
       // Дополнительная логика после успешного добавления фильма, например, закрытие модального окна
     } catch (error) {
       console.error("Error adding film:", error);

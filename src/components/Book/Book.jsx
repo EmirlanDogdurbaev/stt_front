@@ -1,18 +1,16 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 import cl from "./Book.module.scss";
 import { Link } from "react-router-dom";
 
 function Book(props) {
-  // eslint-disable-next-line react/prop-types
-  const { imageUrl, author, name } = props;
+  const { image, author, title, id } = props;
 
   return (
-    <Link to="/bookdetail">
+    <Link to={`/bookdetail/${id}`}>
       <div className={cl.wrap}>
-        <img src={imageUrl} alt="photo" />
+        <img src={image} alt="photo" />
         <p className={cl.authorText}>{author}</p>
-        <p className={cl.nameText}>{name}</p>
+        <p className={cl.nameText}>{title}</p>
       </div>
     </Link>
   );

@@ -1,76 +1,55 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cl from "./BookDetail.module.scss";
 import trans from "../../assets/transfer.png";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function BookDetail() {
-  const dynamic_text = `Я был правозащитником, а бывших правозащитников не бывает» — на
-     вопросы RFI ответил заместитель председателя кабинета министров
-     Кыргызстана Эдиль Байсалов «Перелом в сознании произошел», — завил
-     в интервью RFI по поводу прав женщин заместитель председателя
-     кабинета министров Кыргызстана Эдиль Байсалов, который прибыл в Париж
-     в связи с празднованиями в честь 75-летия принятия Всеобщей декларации
-     прав человека. Он также ответил на вопросы об экологических правах,
-     борьбе с коррупцией и об ограничивающих свободу гражданского общества
-     законопроектах. Я был правозащитником, а бывших правозащитников
-     не бывает» — на вопросы RFI ответил заместитель председателя кабинета
-     министров Кыргызстана Эдиль Байсалов «Перелом в сознании
-     произошел», — завил в интервью RFI по поводу прав женщин заместитель
-     председателя кабинета министров Кыргызстана Эдиль Байсалов, который
-     прибыл в Париж в связи с празднованиями в честь 75-летия принятия
-     Всеобщей декларации прав человека. Он также ответил на вопросы об
-     экологических правах, борьбе с коррупцией и об ограничивающих свободу
-     гражданского общества законопроектах.`;
-
-  const [filmData, setFilmData] = useState(null);
-  const { id } = useParams(); // Получение id фильма из URL
+  const [bookData, setBookData] = useState(null);
+  const [bookData2, setBookData2] = useState(null);
+  const { id } = useParams(); // Получение id книги из URL
 
   useEffect(() => {
-    const fetchFilmData = async () => {
+    const fetchBookData = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.54.19:8000/books/${id}`
+          `http://192.168.54.19:8000/book/${id}/translate/`
         );
-        setFilmData(response.data); // Сохранение полученных данных о фильме
-        console.log(response);
+        setBookData(response.data);
+        setBookData2(response.data); // Сохранение полученных данных о книге
       } catch (error) {
-        console.error("Error fetching film data:", error);
+        console.error("Error fetching book data:", error);
       }
     };
 
-    fetchFilmData();
+    fetchBookData();
 
     return () => {
-      setFilmData(null);
+      setBookData(null);
     };
   }, [id]);
 
-  if (!filmData) {
+  const fetchTranslation = async (language) => {
+    try {
+      const response = await axios.get(
+        `http://192.168.54.19:8000/book/${id}/translate?language=${language}`
+      );
+      setBookData2(response.data); // Обновление данных перевода книги
+    } catch (error) {
+      console.error("Error fetching translation:", error);
+    }
+  };
+
+  if (!bookData) {
     return <div>Loading...</div>;
   }
 
-  const { file, subtitles } = filmData;
-
-  const handleSubtitlesRequest = async (language) => {
-    try {
-      const response = await axios.get(
-        `http://192.168.54.19:8000/movies/${id}/subtitles?language=${language}`
-      );
-      setFilmData(response.data); // Сохранение полученных субтитров
-    } catch (error) {
-      console.error("Error fetching subtitles:", error);
-    }
-  };
   return (
     <div className={cl.wrap}>
       <div className={cl.right}>
-        <p className={cl.rText}>{dynamic_text}</p>
+        <p className={cl.rText}>{bookData.content}</p>
         <div className={cl.rbtns}>
-          <div
-            className={cl.rsmall}
-            onClick={() => handleSubtitlesRequest("kg")}
-          >
+          <div className={cl.rsmall} onClick={() => fetchTranslation("kg")}>
             <p>Кыргызский</p>
           </div>
         </div>
@@ -79,18 +58,12 @@ function BookDetail() {
       <img src={trans} alt="photo" className={cl.trans} />
 
       <div className={cl.right}>
-        <p className={cl.rText}>{dynamic_text}</p>
+        <p className={cl.rText}>{bookData2.content}</p>
         <div className={cl.rbtns}>
-          <div
-            className={cl.rsmall}
-            onClick={() => handleSubtitlesRequest("ru")}
-          >
+          <div className={cl.rsmall} onClick={() => fetchTranslation("ru")}>
             <p>Русский</p>
           </div>
-          <div
-            className={cl.rsmall}
-            onClick={() => handleSubtitlesRequest("en")}
-          >
+          <div className={cl.rsmall} onClick={() => fetchTranslation("en")}>
             <p>Английский</p>
           </div>
         </div>
