@@ -32,22 +32,21 @@ const Bookpage = () => {
   });
 
   const handleChange = (e) => {
-    const { title, author, content, image } = e.target;
+    const { name, value, files } = e.target;
     setBookData({
-      ...filmData,
-      [name]: files ? files[0] : value, // Если это файл, сохраняем объект файла, иначе сохраняем значение
+      ...bookData,
+      [name]: files ? files[0] : value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("asdasd");
     try {
       const formData = new FormData();
-      formData.append("title", filmData.title);
-      formData.append("autor", filmData.author);
-      formData.append("content", filmData.content);
-      formData.append("image", filmData.image);
+      formData.append("title", bookData.title);
+      formData.append("author", bookData.author);
+      formData.append("content", bookData.content);
+      formData.append("image", bookData.image);
 
       const response = await axios.post(
         "http://192.168.54.19:8000/book/",
@@ -108,11 +107,11 @@ const Bookpage = () => {
                 type="text"
                 name="title"
                 placeholder="Title of book"
+                value={bookData.title}
+                onChange={handleChange}
                 style={{
                   width: "60%",
                 }}
-                value={bookData.title}
-                onChange={handleChange}
               />
               <input
                 type="text"
