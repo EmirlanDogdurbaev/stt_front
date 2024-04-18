@@ -1,56 +1,85 @@
-import React from "react";
-import cl from "./AudioDetail.module.scss";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import axios from "axios";
+import classes from "./AudioDetail.module.scss";
 
-function AudioDetail() {
-  const dynamic_text = `Я был правозащитником, а бывших правозащитников не бывает» — на
-          вопросы RFI ответил заместитель председателя кабинета министров
-          Кыргызстана Эдиль Байсалов «Перелом в сознании произошел», — завил
-          в интервью RFI  по поводу прав женщин заместитель председателя
-          кабинета министров Кыргызстана Эдиль Байсалов, который прибыл в Париж
-          в связи с празднованиями в честь 75-летия принятия Всеобщей декларации
-          прав человека. Он также ответил на вопросы об экологических правах,
-          борьбе с коррупцией и об ограничивающих свободу гражданского общества
-          законопроектах. Я был правозащитником, а бывших правозащитников
-          не бывает» — на вопросы RFI ответил заместитель председателя кабинета
-          министров Кыргызстана Эдиль Байсалов «Перелом в сознании
-          произошел», — завил в интервью RFI  по поводу прав женщин заместитель
-          председателя кабинета министров Кыргызстана Эдиль Байсалов, который
-          прибыл в Париж в связи с празднованиями в честь 75-летия принятия
-          Всеобщей декларации прав человека. Он также ответил на вопросы об
-          экологических правах, борьбе с коррупцией и об ограничивающих свободу
-          гражданского общества законопроектах.`;
+const AudioDetail = () => {
+  const [audioData, setAudioData] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchAudioData = async () => {
+      try {
+        const response = await axios.get(
+          `http://192.168.54.19:8000/movies/${id}`
+        );
+        setAudioData(response.data);
+      } catch (error) {
+        console.error("Error fetching audio data:", error);
+      }
+    };
+
+    fetchAudioData();
+
+    return () => {
+      setAudioData(null);
+    };
+  }, [id]);
+
+  if (!audioData) {
+    return <div>Loading...</div>;
+  }
+
+  const { file, subtitles } = audioData;
+  console.log(file);
+
+  const handleSubtitlesRequest = async (language) => {
+    try {
+      const response = await axios.get(
+        `http://192.168.54.19:8000/movies/${id}/subtitles?language=${language}`
+      );
+      setAudioData(response.data);
+    } catch (error) {
+      console.error("Error fetching subtitles:", error);
+    }
+  };
 
   return (
-    <div className={cl.wrap}>
-      <div className={cl.left}>
-        <audio
-          controls
-          className={cl.audio}
-          src="/media/cc0-audio/t-rex-roar.mp3"
-        ></audio>
-        <Link to="#">
-          <div className={cl.btn}>
-            <p className={cl.btnText}>Включить субтитры</p>
-          </div>
-        </Link>
+    <div className={classes.wrap}>
+      <div className={classes.left}>
+        <audio className={classes.leftArea} controls>
+          <source src={file} type="audio/mpeg" />
+        </audio>
       </div>
-      <div className={cl.right}>
-        <p className={cl.rText}>{dynamic_text}</p>
-        <div className={cl.rbtns}>
-          <div className={cl.rsmall}>
+      <div className={classes.right}>
+        <p className={classes.rText}>
+          {subtitles
+            ? subtitles
+            : "Включите субтитры, чтобы получить текст с аудио"}
+        </p>
+        <div className={classes.rbtns}>
+          <div
+            className={classes.rsmall}
+            onClick={() => handleSubtitlesRequest("kg")}
+          >
             <p>Кыргызский</p>
           </div>
-          <div className={cl.rsmall}>
+          <div
+            className={classes.rsmall}
+            onClick={() => handleSubtitlesRequest("ru")}
+          >
             <p>Русский</p>
           </div>
-          <div className={cl.rsmall}>
+          <div
+            className={classes.rsmall}
+            onClick={() => handleSubtitlesRequest("en")}
+          >
             <p>Английский</p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default AudioDetail;
