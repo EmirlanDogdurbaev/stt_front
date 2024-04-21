@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import cl from "./BookDetail.module.scss";
 import trans from "../../assets/transfer.png";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import {api} from "../../store/requests/api.js";
 
 function BookDetail() {
   const [bookData, setBookData] = useState(null);
@@ -13,7 +14,7 @@ function BookDetail() {
     const fetchBookData = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.54.19:8000/book/${id}/translate/`
+          `${api}/book/${id}/translate/`
         );
         setBookData(response.data);
         setBookData2(response.data); // Сохранение полученных данных о книге
@@ -32,7 +33,7 @@ function BookDetail() {
   const fetchTranslation = async (language) => {
     try {
       const response = await axios.get(
-        `http://192.168.54.19:8000/book/${id}/translate?language=${language}`
+        `${api}/book/${id}/translate?language=${language}`
       );
       setBookData2(response.data); // Обновление данных перевода книги
     } catch (error) {

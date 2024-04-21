@@ -13,6 +13,8 @@ import Courses from "./components/Courses/Courses.jsx";
 import CourseDetail from "./components/CourseDetail/CourseDetail.jsx";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
+import SpeechToText from "./components/Record.jsx";
+import {api} from "./store/requests/api.js";
 
 function App() {
     const [audioSrc, setAudioSrc] = useState("");
@@ -46,7 +48,7 @@ function App() {
 
                 try {
                     const response = await axios.post(
-                        "http://192.168.54.19:8000/tts/",
+                        `${api}/tts/`,
                         {text: selectedText},
                         {responseType: "blob"}
                     );
@@ -88,6 +90,7 @@ function App() {
                     <Routes>
                         <Route path="/" index element={<Homepage/>}/>
                         <Route path="/videopage" element={<Filmpage/>}/>
+                        <Route path="/stt" element={<SpeechToText/>}/>
                         <Route path="/bookpage" element={<Bookpage/>}/>
                         <Route path="/audiopage" element={<Audiopage/>}/>
                         <Route path="/coursepage" element={<Courses/>}/>
@@ -95,7 +98,7 @@ function App() {
                         <Route path="/bookdetail/:id" element={<BookDetail/>}/>x
                         <Route path="/coursedetail" element={<CourseDetail/>}/>
                         <Route path="/coursedetail/:id" element={<CourseDetail/>}/>
-                        <Route path="/audiodetail" element={<AudioDetail/>}/>
+                        <Route path="/audiodetail/:id" element={<AudioDetail/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="*" element={<Navigate to="/"/>}/>

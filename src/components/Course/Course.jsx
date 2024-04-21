@@ -1,8 +1,7 @@
 import classes from "./Course.module.scss";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Course = (props) => {
-
 
     return (
         <div className={classes.Course}>

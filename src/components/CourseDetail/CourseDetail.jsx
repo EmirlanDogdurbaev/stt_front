@@ -6,8 +6,10 @@ import axios from "axios";
 
 function CourseDetail() {
     const {id} = useParams();
-
     const [courses, setCourses] = useState([]);
+
+
+
 
     useEffect(() => {
         axios.get(`${api}/lesson/grammar/${id}/`).then((response) => {
@@ -23,8 +25,6 @@ function CourseDetail() {
         })
     }, []);
 
-
-    // sdasdasd
 
     const [selectedAnswers, setSelectedAnswers] = useState({});
     console.log(selectedAnswers)
@@ -42,7 +42,7 @@ function CourseDetail() {
             // const jsonData = JSON.stringify(answerData.answers);
 
             const response = await axios.post(
-                `http://192.168.54.19:8000/lesson/reading/${id}/test/`,
+                `${api}/lesson/reading/${id}/test/`,
                 {answers: {"1": 3, "2": 6, "3": 9}}
             );
 
@@ -56,8 +56,9 @@ function CourseDetail() {
     const [speaking, setSpeaking] = useState([]);
     useEffect(() => {
         try {
-            axios.get(`${api}/lesson/reading/${id}/`).then((response) => {
-                setSpeaking(response)
+            axios.get(`${api}/lesson/speaking/${id}/`).then((response) => {
+                setSpeaking(response.data)
+
             })
         } catch (error) {
             console.error("Error adding film:", error);
@@ -65,7 +66,26 @@ function CourseDetail() {
     }, []);
 
 
-    console.log(speaking);
+
+
+    const [audioUrl, setAudioUrl] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${api}/lesson/listening/5/audio`);
+                const base64Data = response.data.audio_data; // Assuming this is the base64 audio data
+                const binaryData = atob(base64Data);
+                const blob = new Blob([binaryData], {type: 'audio/mpeg'}); // Adjust the MIME type if necessary
+                const url = URL.createObjectURL(blob);
+                setAudioUrl(url);
+            } catch (error) {
+                console.error("Error fetching listening lesson:", error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
 
     return (<div className={classes.CourseDetail}>
         <div className={classes.CourseDetail__wallpaper}>
@@ -84,7 +104,14 @@ function CourseDetail() {
                     {question.options.map((option) => (
                         <ul className={classes.answers} key={option.id}>
                             <li className={classes.answer}
-                                style={{border: "1px solid red", padding: "10px 20px", margin: "10px 0"}}>
+                                style={{
+                                    border: "1px solid white",
+                                    padding: "10px 20px",
+                                    margin: "20px 0",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "20px"
+                                }}>
                                 <p>{option.id}</p>
                                 <button className={classes.variant}
                                         onClick={() => {
@@ -101,97 +128,23 @@ function CourseDetail() {
                 </div>
             ))}
 
-            <button onClick={handleSubmit}>test</button>
+            <button onClick={handleSubmit} style={{padding: "10px 20px", width: "200px", margin: "20px 0"}}>Отправить
+            </button>
 
             <div className={classes.test}>
-                <h3 className={classes.test__title}>Дававйте пройдем небольшой тест для закрепления
-                    материала:</h3>
+                <h3 className={classes.test__title}>Разговорный</h3>
                 <ul className={classes.test__questions}>
-                    <li className={classes.test__quetion}>
-                        <h4 className={classes.quetion__text}>{reading.title}</h4>
-                        <p>{reading.content}</p>
 
 
-                    </li>
-                    <li className={classes.test__quetion}>
-                        <h4 className={classes.quetion__text}>Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Esse, veritatis?</h4>
-                        <ul className={classes.answers}>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 1</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 2</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 3</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 4</button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li className={classes.test__quetion}>
-                        <h4 className={classes.quetion__text}>Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Esse, veritatis?</h4>
-                        <ul className={classes.answers}>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 1</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 2</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 3</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 4</button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li className={classes.test__quetion}>
-                        <h4 className={classes.quetion__text}>Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Esse, veritatis?</h4>
-                        <ul className={classes.answers}>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 1</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 2</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 3</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 4</button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li className={classes.test__quetion}>
-                        <h4 className={classes.quetion__text}>Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Esse, veritatis?</h4>
-                        <ul className={classes.answers}>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 1</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 2</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 3</button>
-                            </li>
-                            <li className={classes.answer}>
-                                <button className={classes.variant}>Variant 4</button>
-                            </li>
-                        </ul>
-                    </li>
+                    <li>{speaking.text}</li>
                 </ul>
                 <div className={classes.test__end}>
-                    <p className={classes.test__result}>
-                        Total: <span className={classes.test__rights}>5</span>/<span
-                        className={classes.test__total}>5</span>
-                    </p>
-                    <p className={classes.test__mark}>Excellent</p>
+                    {audioUrl && (
+                        <audio controls>
+                            <source src={audioUrl} type="audio/mpeg"/>
+                            Your browser does not support the audio tag.
+                        </audio>
+                    )}
                 </div>
             </div>
         </div>

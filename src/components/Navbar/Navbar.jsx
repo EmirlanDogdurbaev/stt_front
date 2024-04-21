@@ -7,13 +7,13 @@ const Navbar = () => {
             <div>
                 <ul className={classes.nav_logo}>
                     <li>
-                        <NavLink to={"/"}><h4>LOGO</h4></NavLink>
+                        <NavLink to={"/"}><h4>KYRGYZ-AI</h4></NavLink>
                     </li>
                 </ul>
 
                 <ul className={classes.nav}>
                     <li>
-                        <NavLink to={"/videopage"} >Видео</NavLink>
+                        <NavLink to={"/videopage"}>Видео</NavLink>
                     </li>
                     <li>
                         <NavLink to={"/audiopage"}>Аудио</NavLink>
@@ -24,9 +24,9 @@ const Navbar = () => {
                     <li>
                         <NavLink to={"/coursepage"}>Уроки</NavLink>
                     </li>
-                    <li>
-                        <NavLink to={"/login"}>Войти</NavLink>
-                    </li>
+                    {/*<li>*/}
+                    {/*    <NavLink to={"/login"}>Войти</NavLink>*/}
+                    {/*</li>*/}
 
 
                 </ul>

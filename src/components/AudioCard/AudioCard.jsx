@@ -1,7 +1,7 @@
-import React from "react";
 import cl from "./AudioCard.module.scss";
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 function AudioCard({ songName, authorName, imageUrl, id }) {
   return (
     <Link to={`/videodetail/${id}`} className={cl.wrap}>

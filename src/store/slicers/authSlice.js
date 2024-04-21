@@ -17,13 +17,13 @@ export const login = createAsyncThunk('auth/login', async ({ password, email }) 
 });
 
 
-export const signup = createAsyncThunk('/signup', async ({ username, password, email }) => {
-    const response = await axios.post( `${api}/register`, { username, password, email });
+export const signup = createAsyncThunk('/register', async ({ username, password, email }) => {
+    const response = await axios.post( `${api}register`, { username, password, email });
     const token = response.data.access_token;
     localStorage.setItem('access_token', token);
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
-    return {username, email, token};
+    return { email, token};
 
 });
 
