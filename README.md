@@ -3,6 +3,7 @@
 чтоб установить к себе выполните следующие команды:
 
 git clone 
+
 cd ./project-name
 
 npm install
