@@ -1,9 +1,10 @@
-# React + Vite
+Этот проект предназначен для обучения кыргызскому языку
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+чтоб установить к себе выполните следующие команды:
 
-Currently, two official plugins are available:
+git clone 
+cd ./project-name
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# stt_front
+npm install
+
+npm run dev 
