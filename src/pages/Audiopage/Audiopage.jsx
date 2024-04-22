@@ -3,7 +3,7 @@ import classes from "./Audiopage.module.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {api} from "../../store/requests/api.js";
+import { api } from "../../store/requests/api.js";
 
 const Audiopage = () => {
   const [toggle, setToggle] = useState(true);
@@ -12,7 +12,7 @@ const Audiopage = () => {
   useEffect(() => {
     async function fetchFilms() {
       try {
-        const response = await axios.get(`${api}/audio/`);
+        const response = await axios.get("http://172.20.10.2:8000/audio/");
         setAudio(response.data);
       } catch (error) {
         console.error("Error fetching films:", error);
@@ -48,7 +48,7 @@ const Audiopage = () => {
       formData.append("file", audioData.audio);
 
       const response = await axios.post(
-        "http://192.168.54.19:8000/audio/",
+        "http://172.20.10.2:8000/audio/",
         formData
       );
       console.log(response.data);

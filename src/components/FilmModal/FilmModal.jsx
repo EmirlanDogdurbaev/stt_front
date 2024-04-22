@@ -27,7 +27,7 @@ function FilmModal(props) {
       formData.append("file", filmData.video);
 
       const response = await axios.post(
-        "http://192.168.54.19:8000/movies/",
+        "http://172.20.10.2:8000/movies/",
         formData
       );
       console.log("Film added successfully:", response.data);

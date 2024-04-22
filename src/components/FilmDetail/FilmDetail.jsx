@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import classes from "./FilmDetail.module.scss";
-import {api} from "../../store/requests/api.js";
+import { api } from "../../store/requests/api.js";
 
 const FilmDetail = () => {
   const [filmData, setFilmData] = useState(null);
@@ -12,7 +12,7 @@ const FilmDetail = () => {
     const fetchFilmData = async () => {
       try {
         const response = await axios.get(
-          `${api}/movies/${id}`
+          `http://172.20.10.2:8000/movies/${id}`
         );
         setFilmData(response.data); // Сохранение полученных данных о фильме
         console.log(response);
@@ -37,7 +37,7 @@ const FilmDetail = () => {
   const handleSubtitlesRequest = async (language) => {
     try {
       const response = await axios.get(
-        `${api}/movies/${id}/subtitles?language=${language}`
+        `http://172.20.10.2:8000/movies/${id}/subtitles?language=${language}`
       );
       setFilmData(response.data); // Сохранение полученных субтитров
     } catch (error) {

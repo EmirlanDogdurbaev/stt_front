@@ -14,7 +14,7 @@ function BookDetail() {
     const fetchBookData = async () => {
       try {
         const response = await axios.get(
-          `${api}/book/${id}/translate/`
+          `http://172.20.10.2:8000/book/${id}/translate/`
         );
         setBookData(response.data);
         setBookData2(response.data); // Сохранение полученных данных о книге
@@ -33,7 +33,7 @@ function BookDetail() {
   const fetchTranslation = async (language) => {
     try {
       const response = await axios.get(
-        `${api}/book/${id}/translate?language=${language}`
+        `http://172.20.10.2:8000/book/${id}/translate?language=${language}`
       );
       setBookData2(response.data); // Обновление данных перевода книги
     } catch (error) {
