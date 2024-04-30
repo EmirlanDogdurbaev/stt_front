@@ -11,7 +11,7 @@ const Bookpage = () => {
   useEffect(() => {
     async function fetchBooks() {
       try {
-        const response = await axios.get("http://172.20.10.2:8000/book/all/");
+        const response = await axios.get(`${api}/book/all/`);
         setBook(response.data);
       } catch (error) {
         console.error("Error fetching films:", error);
@@ -27,7 +27,7 @@ const Bookpage = () => {
 
   const [bookData, setBookData] = useState({
     title: "",
-    autor: "",
+    author: "",
     content: "",
     image: null,
   });
@@ -50,7 +50,7 @@ const Bookpage = () => {
       formData.append("image", bookData.image);
 
       const response = await axios.post(
-        "http://172.20.10.2:8000/book/",
+        `${api}/book/`,
         formData
       );
       console.log(response.data);

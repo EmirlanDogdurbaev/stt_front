@@ -12,7 +12,7 @@ const Audiopage = () => {
   useEffect(() => {
     async function fetchFilms() {
       try {
-        const response = await axios.get("http://172.20.10.2:8000/audio/");
+        const response = await axios.get(`${api}/audio/`);
         setAudio(response.data);
       } catch (error) {
         console.error("Error fetching films:", error);
@@ -48,7 +48,7 @@ const Audiopage = () => {
       formData.append("file", audioData.audio);
 
       const response = await axios.post(
-        "http://172.20.10.2:8000/audio/",
+        `${api}/audio/`,
         formData
       );
       console.log(response.data);
@@ -68,20 +68,6 @@ const Audiopage = () => {
         </nav>
         {toggle === true ? (
           <div className={classes.cont_left}>
-            {/*<section className={classes.film}>*/}
-            {/*    <video autoPlay loop width={800} height={500}>*/}
-            {/*        <source src="https://cdn.pixabay.com/video/2023/12/10/192687-893427276_large.mp4"*/}
-            {/*                type="video/mp4"/>*/}
-            {/*    </video>*/}
-            {/*    <div>*/}
-            {/*        <h4>Керемет коч</h4>*/}
-            {/*        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, qui?</p>*/}
-            {/*        <button>*/}
-            {/*            <Link to={"/audiodetail/1"}>button</Link>*/}
-            {/*        </button>*/}
-            {/*    </div>*/}
-            {/*</section>*/}
-
             <section className={classes.film_card}>
               {audio.map((item) => (
                 <article key={item.id}>
