@@ -12,7 +12,7 @@ const FilmDetail = () => {
     const fetchFilmData = async () => {
       try {
         const response = await axios.get(
-          `http://172.20.10.2:8000/movies/${id}`
+          `${api}/movies/${id}`
         );
         setFilmData(response.data); // Сохранение полученных данных о фильме
         console.log(response);
@@ -37,7 +37,7 @@ const FilmDetail = () => {
   const handleSubtitlesRequest = async (language) => {
     try {
       const response = await axios.get(
-        `http://172.20.10.2:8000/movies/${id}/subtitles?language=${language}`
+        `${api}/movies/${id}/subtitles?language=${language}`
       );
       setFilmData(response.data); // Сохранение полученных субтитров
     } catch (error) {
